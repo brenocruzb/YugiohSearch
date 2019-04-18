@@ -1,0 +1,38 @@
+﻿Busca
+Exibe img (Retrait) - (Landscape - Card + detalhes)
+Botão detalhes
+	name
+	type
+	desc
+	atk/def
+	level
+	race
+	attribute
+	archetype
+	setcode
+	
+Histórico
+	List cards buscados com ROOM a partir do ID
+	armazena as imagens pequenas e as 10~20 grandes mais recentes.
+
+CRUD deck
+Monta deck a partir da banlist TCG/OCG (Talvez duel links armazenada via Firebase e atualizada por mim sempre que houver mudança)
+	id
+	name
+	description
+	listCards
+	cover
+
+__________________________________
+
+SplashActivity
+MainActivity
+	SearchFragment
+	CardDetailFragment
+	HistoryListFragment
+	DeckListFragment
+CreateDeckActivity
+
+
+Endpoint base
+https://db.ygoprodeck.com/api/v4/cardinfo.php?fname=DESkBOT 001
