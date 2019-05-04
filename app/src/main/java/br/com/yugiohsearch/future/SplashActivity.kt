@@ -1,4 +1,4 @@
-package br.com.yugiohsearch
+package br.com.yugiohsearch.future
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

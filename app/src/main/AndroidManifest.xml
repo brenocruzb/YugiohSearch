@@ -3,11 +3,14 @@
           xmlns:tools="http://schemas.android.com/tools"
           package="br.com.yugiohsearch">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
             android:allowBackup="true"
             android:icon="@mipmap/ic_launcher"
             android:label="@string/app_name"
             android:roundIcon="@mipmap/ic_launcher_round"
+            android:fullBackupContent="false"
             android:supportsRtl="true"
             android:theme="@style/AppTheme"
             tools:ignore="GoogleAppIndexingWarning">
@@ -21,8 +24,8 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".SplashActivity"/>
-        <activity android:name=".DeckActivity"/>
+        <activity android:name=".future.SplashActivity"/>
+        <activity android:name=".future.DeckActivity"/>
     </application>
 
 </manifest>

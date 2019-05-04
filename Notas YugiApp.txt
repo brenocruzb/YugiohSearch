@@ -35,4 +35,4 @@ CreateDeckActivity
 
 
 Endpoint base
-https://db.ygoprodeck.com/api/v4/cardinfo.php?fname=DESkBOT 001
+https://db.ygoprodeck.com/api/v4/ - cardinfo.php?fname=DESkBOT 001
