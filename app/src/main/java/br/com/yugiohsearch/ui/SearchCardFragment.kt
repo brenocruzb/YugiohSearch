@@ -28,11 +28,9 @@ class SearchCardFragment: Fragment() {
         binding.searchCardViewModel = viewModel
         binding.lifecycleOwner = this
 
-
         viewModel.cardMutableLiveData.observe(this, Observer {cards ->
-            CustomSetter.loadImage(ivCard, cards[0].image_url ?: "")
+            CustomSetter.loadImage(iv_card, cards[0].image_url ?: "")
         })
-
 
         return binding.root
     }

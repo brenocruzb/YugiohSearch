@@ -1,12 +1,5 @@
 package br.com.yugiohsearch.model
 
-import android.widget.ImageView
-import androidx.databinding.BindingAdapter
-import com.bumptech.glide.request.RequestOptions
-import com.bumptech.glide.Glide
-
-
-
 class Card{
     var id: String = ""
     var name: String = ""

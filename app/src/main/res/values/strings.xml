@@ -10,4 +10,12 @@
 
     <string name="search">Buscar</string>
     <string name="card">Carta</string>
+    <string name="name">Nome</string>
+    <string name="type">Tipo</string>
+    <string name="description">Descrição</string>
+    <string name="race">Raça</string>
+    <string name="atk">Ataque</string>
+    <string name="def">Defesa</string>
+    <string name="level">Nível</string>
+    <string name="attribute">Atributo</string>
 </resources>
