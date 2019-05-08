@@ -14,14 +14,14 @@ class SearchCardViewModel: ViewModel() {
     val tilErrorSearch: MutableLiveData<String> by lazy { MutableLiveData<String>() }
     val editSearch: MutableLiveData<String> by lazy { MutableLiveData<String>().apply { value = "a" } }
 
-    val tvCardName: MutableLiveData<String> by lazy { MutableLiveData<String>() }
+//    private val tvCardName: MutableLiveData<String> by lazy { MutableLiveData<String>() }
 
-    private val imageUrl: MutableLiveData<String> by lazy { MutableLiveData<String>() }
+    val imageUrl: MutableLiveData<String> by lazy { MutableLiveData<String>() }
 
     val loading: MutableLiveData<Int> by lazy { MutableLiveData<Int>().apply { value = Constants.gone } }
     val loadCard: MutableLiveData<Int> by lazy { MutableLiveData<Int>().apply { value = Constants.visible } }
 
-    val cardMutableLiveData: MutableLiveData<List<Card>> by lazy { MutableLiveData<List<Card>>() }
+    val cardMutableLiveData: MutableLiveData<Card> by lazy { MutableLiveData<Card>() }
 
     fun onSearchClicked(){
         loading.value = Constants.visible
@@ -33,10 +33,11 @@ class SearchCardViewModel: ViewModel() {
             YugiohSearchApi().getRandomCard(object : Callback<List<List<Card>>> {
                 override fun onResponse(call: Call<List<List<Card>>>, response: Response<List<List<Card>>>) {
                     if(response.code() == 200){
-                        val cards = response.body()!![0]
-                        fillFields(cards[0])
+                        val card = response.body()!![0][0]
+//                        fillFields(cards)
 
-                        cardMutableLiveData.value = cards
+                        imageUrl.value = card.image_url
+                        cardMutableLiveData.value = card
                     }else{
                         tilErrorSearch.value = "Falha ao converter retorno em card."
                     }
@@ -54,12 +55,11 @@ class SearchCardViewModel: ViewModel() {
         }
     }
 
-    private fun fillFields(card: Card){
-        imageUrl.value = card.image_url
-
-        //landscape
-        tvCardName.value = card.name
-    }
-
-
+//    private fun fillFields(card: Card){
+//        imageUrl.value = card.image_url
+//
+//        //landscape
+//        tvCardName.value = card.name
+//
+//    }
 }

@@ -23,6 +23,8 @@ Monta deck a partir da banlist TCG/OCG (Talvez duel links armazenada via Firebas
 	listCards
 	cover
 
+Ao fim da aplicação, inserir o sentry para monitoramento de erros.
+
 __________________________________
 
 SplashActivity
