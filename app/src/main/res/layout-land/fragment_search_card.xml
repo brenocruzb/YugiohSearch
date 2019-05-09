@@ -61,7 +61,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toTopOf="@+id/btn_submit"
-                app:imageUrl="@{searchCardViewModel.imageUrl}"
+                app:imageUrl="@{searchCardViewModel.cardMutableLiveData.image_url}"
         />
 
         <br.com.yugiohsearch.ui.ConstraintCardDescription
@@ -69,6 +69,7 @@
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_margin="16dp"
+                app:viewModel="@{searchCardViewModel}"
                 app:layout_constraintStart_toEndOf="@id/iv_card"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"

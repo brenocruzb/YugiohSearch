@@ -8,18 +8,16 @@ import br.com.yugiohsearch.util.Constants
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import com.facebook.drawee.backends.pipeline.Fresco
+
 
 class SearchCardViewModel: ViewModel() {
 
-    val tilErrorSearch: MutableLiveData<String> by lazy { MutableLiveData<String>() }
-    val editSearch: MutableLiveData<String> by lazy { MutableLiveData<String>().apply { value = "a" } }
-
-//    private val tvCardName: MutableLiveData<String> by lazy { MutableLiveData<String>() }
-
-    val imageUrl: MutableLiveData<String> by lazy { MutableLiveData<String>() }
-
     val loading: MutableLiveData<Int> by lazy { MutableLiveData<Int>().apply { value = Constants.gone } }
     val loadCard: MutableLiveData<Int> by lazy { MutableLiveData<Int>().apply { value = Constants.visible } }
+
+    val tilErrorSearch: MutableLiveData<String> by lazy { MutableLiveData<String>() }
+    val editSearch: MutableLiveData<String> by lazy { MutableLiveData<String>().apply { value = "a" } }
 
     val cardMutableLiveData: MutableLiveData<Card> by lazy { MutableLiveData<Card>() }
 
@@ -34,9 +32,6 @@ class SearchCardViewModel: ViewModel() {
                 override fun onResponse(call: Call<List<List<Card>>>, response: Response<List<List<Card>>>) {
                     if(response.code() == 200){
                         val card = response.body()!![0][0]
-//                        fillFields(cards)
-
-                        imageUrl.value = card.image_url
                         cardMutableLiveData.value = card
                     }else{
                         tilErrorSearch.value = "Falha ao converter retorno em card."
@@ -55,11 +50,8 @@ class SearchCardViewModel: ViewModel() {
         }
     }
 
-//    private fun fillFields(card: Card){
-//        imageUrl.value = card.image_url
-//
-//        //landscape
-//        tvCardName.value = card.name
-//
-//    }
+    override fun onCleared() {
+        super.onCleared()
+        Fresco.getImagePipeline().clearCaches()
+    }
 }
