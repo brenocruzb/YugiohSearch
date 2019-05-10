@@ -18,4 +18,5 @@
     <string name="def">Defesa</string>
     <string name="level">Nível</string>
     <string name="attribute">Atributo</string>
+    <string name="random">Aleatório</string>
 </resources>

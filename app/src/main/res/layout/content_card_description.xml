@@ -5,11 +5,10 @@
 >
 
     <data>
-        <variable name="searchCardViewModel" type="br.com.yugiohsearch.ui.SearchCardViewModel"/>
+        <variable name="card" type="br.com.yugiohsearch.model.Card"/>
     </data>
 
     <ScrollView
-
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@drawable/card_description_border">
@@ -23,7 +22,7 @@
                     android:id="@+id/tv_name"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="@string/name"
+                    android:text="@{card.name}"
                     android:layout_margin="16dp"
                     android:fontFamily="@font/roboto_bold"
                     app:layout_constraintStart_toStartOf="parent"
@@ -35,7 +34,7 @@
                     android:id="@+id/tv_type"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="@string/type"
+                    android:text="@{card.type}"
                     android:layout_margin="16dp"
                     android:fontFamily="@font/roboto_bold"
                     app:layout_constraintStart_toStartOf="parent"
@@ -47,7 +46,7 @@
                     android:id="@+id/tv_desc"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="@string/description"
+                    android:text="@{card.desc}"
                     android:layout_margin="16dp"
                     android:fontFamily="@font/roboto_bold"
                     app:layout_constraintStart_toStartOf="parent"
@@ -59,7 +58,7 @@
                     android:id="@+id/tv_race"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="@string/race"
+                    android:text="@{card.race}"
                     android:layout_margin="16dp"
                     android:fontFamily="@font/roboto_bold"
                     app:layout_constraintStart_toStartOf="parent"
@@ -72,7 +71,7 @@
                     android:id="@+id/tv_atk"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="@string/atk"
+                    android:text="@{card.atk}"
                     android:layout_marginStart="16dp"
                     android:layout_marginEnd="16dp"
                     android:layout_marginBottom="16dp"
@@ -87,7 +86,7 @@
                     android:id="@+id/tv_def"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="@string/def"
+                    android:text="@{card.def}"
                     android:layout_margin="16dp"
                     android:fontFamily="@font/roboto_bold"
                     app:layout_constraintStart_toStartOf="parent"
@@ -99,7 +98,7 @@
                     android:id="@+id/tv_level"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="@string/level"
+                    android:text="@{card.level}"
                     android:layout_margin="16dp"
                     android:fontFamily="@font/roboto_bold"
                     app:layout_constraintStart_toStartOf="parent"
@@ -111,7 +110,7 @@
                     android:id="@+id/tv_attribute"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="@string/attribute"
+                    android:text="@{card.attribute}"
                     android:layout_margin="16dp"
                     android:fontFamily="@font/roboto_bold"
                     app:layout_constraintStart_toStartOf="parent"

@@ -7,7 +7,7 @@ import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
-import br.com.yugiohsearch.ui.SearchCardFragment
+import br.com.yugiohsearch.ui.random.RandomCardFragment
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 
@@ -49,10 +49,13 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.nav_search -> {
+            R.id.nav_random -> {
                 supportFragmentManager.beginTransaction()
-                .replace(R.id.body, SearchCardFragment())
+                .replace(R.id.body, RandomCardFragment())
                 .commitAllowingStateLoss()
+            }
+            R.id.nav_search -> {
+
             }
         }
 
