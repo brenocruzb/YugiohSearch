@@ -10,5 +10,5 @@ interface AppService {
     fun getRandomCard(): Call<List<List<Card>>>
 
     @GET("cardinfo.php")
-    fun getCard(@QueryMap filter: Map<String, String>): Call<List<List<List<Card>>>>
+    fun getCard(@QueryMap filter: Map<String, String>): Call<List<List<Card>>>
 }

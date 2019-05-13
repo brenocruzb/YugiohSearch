@@ -18,6 +18,8 @@ class RandomCardViewModel: ViewModel() {
 
     val cardMutableLiveData: MutableLiveData<Card> by lazy { MutableLiveData<Card>() }
 
+    val messageError: MutableLiveData<String> by lazy { MutableLiveData<String>() }
+
     fun onSearchClicked(){
         loading.value = Constants.visible
         loadCard.value = Constants.invisible
@@ -29,19 +31,18 @@ class RandomCardViewModel: ViewModel() {
                     val card = response.body()!![0][0]
                     cardMutableLiveData.value = card
                 }else{
-//                    tilErrorSearch.value = "Falha ao converter retorno em card."
+                    messageError.value = "Falha ao converter retorno em card."
                 }
                 loading.value = Constants.gone
                 loadCard.value = Constants.visible
             }
 
             override fun onFailure(call: Call<List<List<Card>>>, t: Throwable) {
-//                tilErrorSearch.value = "Falha ao se conectar com o servidor."
+                messageError.value = "Falha ao se conectar com o servidor."
                 loading.value = Constants.gone
                 loadCard.value = Constants.visible
             }
         })
-
     }
 
     override fun onCleared() {

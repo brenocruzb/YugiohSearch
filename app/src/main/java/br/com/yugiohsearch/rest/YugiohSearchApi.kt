@@ -1,10 +1,6 @@
 package br.com.yugiohsearch.rest
 
 import br.com.yugiohsearch.model.Card
-import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
-import org.json.JSONException
-import org.json.JSONObject
 import retrofit2.Callback
 import java.util.HashMap
 
@@ -13,7 +9,7 @@ class YugiohSearchApi {
 
     fun getRandomCard(callback: Callback<List<List<Card>>>) = appService.getRandomCard().enqueue(callback)
 
-    fun getFuzzyCard(fuzzyName: String, callback: Callback<List<List<List<Card>>>>){
+    fun getFuzzyCard(fuzzyName: String, callback: Callback<List<List<Card>>>){
         val map = HashMap<String, String>()
         map["fname"] = fuzzyName
 
