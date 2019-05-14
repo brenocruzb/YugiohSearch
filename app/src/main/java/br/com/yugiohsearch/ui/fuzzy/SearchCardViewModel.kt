@@ -17,7 +17,7 @@ class SearchCardViewModel: ViewModel() {
 
     val listCards: MutableLiveData<List<Card>> by lazy { MutableLiveData<List<Card>>() }
 
-    val editSearch: MutableLiveData<String> by lazy { MutableLiveData<String>() }
+    val editSearch: MutableLiveData<String> by lazy { MutableLiveData<String>().apply { value = "blue-eyes" } }
     val tilErrorSearch: MutableLiveData<String> by lazy { MutableLiveData<String>() }
 
     fun onSearchClicked(){
