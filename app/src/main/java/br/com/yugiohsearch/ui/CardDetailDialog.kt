@@ -3,7 +3,6 @@ package br.com.yugiohsearch.ui
 import android.app.AlertDialog
 import android.app.Dialog
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.DialogFragment
@@ -28,6 +27,7 @@ class CardDetailDialog: DialogFragment(){
             null,
             false
         )
+
         binding.card = card
 
         return AlertDialog.Builder(context).apply { setView(binding.root) }.create()

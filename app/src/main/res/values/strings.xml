@@ -19,4 +19,7 @@
     <string name="level">Nível</string>
     <string name="attribute">Atributo</string>
     <string name="random">Aleatório</string>
+    <string name="version_text">Versão %s</string>
+    <string name="tests">Testes</string>
+    <string name="create_deck">Montar deck</string>
 </resources>

@@ -28,15 +28,11 @@ class SearchCardViewModel: ViewModel() {
             "Insira o nome de um card"
         }else{
             YugiohSearchApi().getFuzzyCard(editSearch.value ?: "IS NULL", object : Callback<List<List<Card>>>{
-                override fun onResponse(
-                    call: Call<List<List<Card>>>,
-                    response: Response<List<List<Card>>>
-                ) {
-                    if(response.code() == 200){
-                        val card = response.body()!![0]
-                        listCards.value = card
-                    }else{
-                        tilErrorSearch.value = "Falha ao converter retorno em card."
+                override fun onResponse(call: Call<List<List<Card>>>, response: Response<List<List<Card>>>) {
+                    when(response.code()) {
+                        200 -> listCards.value = response.body()!![0]
+                        400 -> tilErrorSearch.value = "Card não encontrado."
+                        else -> tilErrorSearch.value = "Falha ao converter retorno em card."
                     }
                     loading.value = Constants.gone
                     loadCard.value = Constants.visible
@@ -46,7 +42,6 @@ class SearchCardViewModel: ViewModel() {
                     tilErrorSearch.value = "Falha ao se conectar com o servidor."
                     loading.value = Constants.gone
                     loadCard.value = Constants.visible
-
                 }
             })
             null
