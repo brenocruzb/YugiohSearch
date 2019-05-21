@@ -35,7 +35,7 @@ fun RecyclerView.setCardList(listCards: List<Card>?){
         CardDetailDialog.getInstance(card = it).show(activity.supportFragmentManager, "dialog_tag")
     }
 
-    val spanCount = Constants.convertPixelsToDp(Constants.point(activity).x.toFloat(), context!!).toInt() / 100
+    val spanCount = Constants.convertPixelsToDp(Constants.point(activity).x.toFloat(), context).toInt() / 100
     layoutManager = GridLayoutManager(context,  spanCount)
     setHasFixedSize(true)
     swapAdapter(searchAdapter, true)
