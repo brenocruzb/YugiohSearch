@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+>
+
+    <data>
+        <variable name="createDeckViewModel" type="br.com.yugiohsearch.ui.create.CreateDeckViewModel"/>
+        <variable name="bottomSheet" type="androidx.constraintlayout.widget.ConstraintLayout"/>
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/filter_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/colorPrimary"
+            app:slideBottomSheet="@{bottomSheet}"
+            app:imageViewEvent="@{ivExpand}"
+    >
+
+        <ImageView
+                android:id="@+id/iv_expand"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_expand_more"
+                android:visibility="gone"
+                android:tint="?attr/textColorAlertDialogListItem"
+                android:contentDescription="@string/toggle"
+                android:padding="16dp"
+                app:expandLayout="@{expandableFilterCard}"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+        />
+
+        <TextView
+                android:id="@+id/tv_add_card"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/add_filter"
+                android:fontFamily="@font/roboto_regular"
+                android:layout_margin="8dp"
+                android:padding="8dp"
+                android:drawableEnd="@drawable/ic_add_circle"
+                android:drawablePadding="8dp"
+                android:drawableTint="?attr/textColorAlertDialogListItem"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/iv_expand"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/expandable_filter_card"
+        />
+
+        <net.cachapa.expandablelayout.ExpandableLayout
+                android:id="@+id/expandable_filter_card"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                app:el_duration="300"
+                app:el_expanded="true"
+                app:el_parallax="0.5"
+                app:layout_constraintTop_toBottomOf="@id/iv_expand"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+        >
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="250dp">
+
+                <!--Custom view list filter-->
+                <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recycler_filter_cards"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </net.cachapa.expandablelayout.ExpandableLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

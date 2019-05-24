@@ -22,4 +22,7 @@
     <string name="version_text">Versão %s</string>
     <string name="tests">Testes</string>
     <string name="create_deck">Montar deck</string>
+    <string name="toggle">toggle</string>
+    <string name="add_card">Adicinar carta</string>
+    <string name="add_filter">Adicionar filtro</string>
 </resources>

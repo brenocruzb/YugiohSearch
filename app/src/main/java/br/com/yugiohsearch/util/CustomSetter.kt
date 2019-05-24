@@ -1,7 +1,12 @@
 package br.com.yugiohsearch.util
 
+import android.view.View
+import android.view.animation.Animation
+import android.view.animation.AnimationUtils
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -9,9 +14,10 @@ import br.com.yugiohsearch.R
 import br.com.yugiohsearch.model.Card
 import br.com.yugiohsearch.ui.CardDetailDialog
 import br.com.yugiohsearch.ui.fuzzy.SearchCardAdapter
-
 import com.bumptech.glide.Glide
 import com.facebook.drawee.view.SimpleDraweeView
+import com.google.android.material.bottomsheet.BottomSheetBehavior
+import net.cachapa.expandablelayout.ExpandableLayout
 
 @BindingAdapter("imageUrl")
 fun SimpleDraweeView.setImageUrl(urlImage: String?) = setImageURI(urlImage)
@@ -39,4 +45,44 @@ fun RecyclerView.setCardList(listCards: List<Card>?){
     layoutManager = GridLayoutManager(context,  spanCount)
     setHasFixedSize(true)
     swapAdapter(searchAdapter, true)
+}
+
+@BindingAdapter("expandLayout")
+fun ImageView.updateBottomSheet(expandableLayout: ExpandableLayout?){
+    setOnClickListener{
+
+        expandableLayout?.toggle()
+
+        val animation = AnimationUtils.loadAnimation(context, R.anim.fade_in)
+        animation.setAnimationListener(object : Animation.AnimationListener{
+            override fun onAnimationRepeat(animation: Animation?) {}
+
+            override fun onAnimationEnd(animation: Animation?) {}
+
+            override fun onAnimationStart(animation: Animation?) {
+                if(expandableLayout?.isExpanded == true)
+                    setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_expand_more))
+                else
+                    setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_expand_less))
+            }
+        })
+        startAnimation(animation)
+    }
+}
+
+@BindingAdapter(value = ["slideBottomSheet", "imageViewEvent"], requireAll = false)
+fun ConstraintLayout.slideBottomSheet(bottomSheet: ConstraintLayout?, imageView: ImageView?){
+    val bottomSheetBehavior = BottomSheetBehavior.from<ConstraintLayout>(bottomSheet).apply { isHideable = false }
+
+    setOnClickListener {
+        bottomSheetBehavior.state =
+            if (bottomSheetBehavior.state != BottomSheetBehavior.STATE_EXPANDED){
+                imageView?.visibility = View.VISIBLE
+                BottomSheetBehavior.STATE_EXPANDED
+            }
+            else {
+                imageView?.visibility = View.GONE
+                BottomSheetBehavior.STATE_COLLAPSED
+            }
+    }
 }

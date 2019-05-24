@@ -59,4 +59,7 @@ dependencies {
     //Glide
     implementation 'com.github.bumptech.glide:glide:4.9.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.9.0'
+
+    //Expandable Layout
+    implementation 'net.cachapa.expandablelayout:expandablelayout:2.9.2'
 }
