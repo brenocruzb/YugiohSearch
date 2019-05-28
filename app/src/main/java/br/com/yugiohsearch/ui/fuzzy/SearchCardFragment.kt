@@ -14,7 +14,6 @@ import br.com.yugiohsearch.databinding.FragmentSearchCardBinding
 class SearchCardFragment: Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val lifecycle = this
         val viewModel = ViewModelProviders.of(this).get(SearchCardViewModel::class.java)
 
         val binding = DataBindingUtil.inflate<FragmentSearchCardBinding>(
@@ -24,7 +23,7 @@ class SearchCardFragment: Fragment() {
             false
         ).apply {
             searchCardViewModel = viewModel
-            lifecycleOwner = lifecycle
+            lifecycleOwner = this@SearchCardFragment
         }
 
         return binding.root

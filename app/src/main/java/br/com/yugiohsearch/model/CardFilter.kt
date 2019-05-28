@@ -13,4 +13,6 @@ class CardFilter: Serializable {
     @SerializedName("fname")
     @Expose
     var fuzzyName: String? = null
+
+    fun validateFuzzyName(): Boolean = !fuzzyName.isNullOrEmpty()
 }

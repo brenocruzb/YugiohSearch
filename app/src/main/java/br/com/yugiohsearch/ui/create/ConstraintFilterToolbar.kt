@@ -15,19 +15,5 @@ class ConstraintFilterToolbar(context: Context, attr: AttributeSet): ConstraintL
 
     fun setSlideUpDownBottomSheet(bottomSheet: ConstraintLayout?){
         binding.bottomSheet = bottomSheet
-//    val bottomSheetBehavior = BottomSheetBehavior.from<ConstraintLayout>(bottomSheet).apply { isHideable = false }
-//
-//
-//    setOnClickListener {
-//        bottomSheetBehavior.state =
-//            if (bottomSheetBehavior.state != BottomSheetBehavior.STATE_EXPANDED){
-//                imageView?.visibility = View.VISIBLE
-//                BottomSheetBehavior.STATE_EXPANDED
-//            }
-//            else {
-//                imageView?.visibility = View.GONE
-//                BottomSheetBehavior.STATE_COLLAPSED
-//            }
-//    }
     }
 }

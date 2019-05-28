@@ -27,6 +27,10 @@
         </activity>
         <activity android:name=".future.SplashActivity"/>
         <activity android:name=".future.DeckActivity"/>
+        <activity
+                android:name=".ui.create.filter.FilterCreateDeckActivity"
+                android:label="@string/filter"
+        />
     </application>
 
 </manifest>

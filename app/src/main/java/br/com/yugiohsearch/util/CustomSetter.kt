@@ -1,5 +1,6 @@
 package br.com.yugiohsearch.util
 
+import android.util.Log
 import android.view.View
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
@@ -18,6 +19,7 @@ import com.bumptech.glide.Glide
 import com.facebook.drawee.view.SimpleDraweeView
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import net.cachapa.expandablelayout.ExpandableLayout
+
 
 @BindingAdapter("imageUrl")
 fun SimpleDraweeView.setImageUrl(urlImage: String?) = setImageURI(urlImage)
@@ -72,7 +74,21 @@ fun ImageView.updateBottomSheet(expandableLayout: ExpandableLayout?){
 
 @BindingAdapter(value = ["slideBottomSheet", "imageViewEvent"], requireAll = false)
 fun ConstraintLayout.slideBottomSheet(bottomSheet: ConstraintLayout?, imageView: ImageView?){
-    val bottomSheetBehavior = BottomSheetBehavior.from<ConstraintLayout>(bottomSheet).apply { isHideable = false }
+    val bottomSheetBehavior = BottomSheetBehavior.from<ConstraintLayout>(bottomSheet).apply {
+        isHideable = false
+        setBottomSheetCallback(object : BottomSheetBehavior.BottomSheetCallback(){
+            override fun onStateChanged(bottomSheet: View, newState: Int) {
+                if (newState == BottomSheetBehavior.STATE_EXPANDED){
+                    imageView?.visibility = View.VISIBLE
+                }
+                else if(newState == BottomSheetBehavior.STATE_COLLAPSED){
+                    imageView?.visibility = View.GONE
+                }
+            }
+
+            override fun onSlide(bottomSheet: View, slideOffset: Float) {}
+        })
+    }
 
     setOnClickListener {
         bottomSheetBehavior.state =

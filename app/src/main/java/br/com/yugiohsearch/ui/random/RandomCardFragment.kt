@@ -12,7 +12,6 @@ import androidx.lifecycle.ViewModelProviders
 import br.com.yugiohsearch.R
 import br.com.yugiohsearch.databinding.FragmentRandomCardBinding
 
-
 class RandomCardFragment: Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val viewModel = ViewModelProviders.of(this).get(RandomCardViewModel::class.java)
@@ -22,10 +21,10 @@ class RandomCardFragment: Fragment() {
             R.layout.fragment_random_card,
             container,
             false
-        )
-
-        binding.randomCardViewModel = viewModel
-        binding.lifecycleOwner = this
+        ).apply {
+            randomCardViewModel = viewModel
+            lifecycleOwner = this@RandomCardFragment
+        }
 
         viewModel.messageError.observe(this, Observer { message ->
             Toast.makeText(context, message, Toast.LENGTH_LONG).show()
