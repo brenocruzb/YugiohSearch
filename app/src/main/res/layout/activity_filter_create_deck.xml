@@ -5,6 +5,7 @@
 
     <data>
         <variable name="filterCreateDeckViewModel" type="br.com.yugiohsearch.ui.create.filter.FilterCreateDeckViewModel"/>
+        <variable name="filter" type="br.com.yugiohsearch.model.CardFilter"/>
     </data>
 
     <ScrollView android:layout_width="match_parent" android:layout_height="match_parent" android:fillViewport="true" >
@@ -30,7 +31,7 @@
                         android:layout_height="50dp"
                         android:fontFamily="@font/roboto_regular"
                         android:hint="@string/name"
-                        android:text="@={filterCreateDeckViewModel.name}"
+                        android:text="@={filter.fuzzyName}"
                 />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -41,7 +42,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="8dp"
                     android:text="@string/filter"
-                    android:onClick="@{() -> filterCreateDeckViewModel.onClickFilter()}"
+                    android:onClick="@{() -> filterCreateDeckViewModel.onClickFilter(filter)}"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"

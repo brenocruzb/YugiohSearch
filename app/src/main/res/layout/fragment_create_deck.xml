@@ -46,12 +46,25 @@
                     android:id="@+id/recycler_card_list"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
+                    android:visibility="@{createDeckViewModel.loadCard}"
+                    app:cardList="@{createDeckViewModel.listCards}"
                     app:layout_constraintTop_toBottomOf="@id/filter_container"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
                     tools:listitem="@layout/item_grid_card"
                     tools:itemCount="5"
+            />
+
+            <ProgressBar
+                    android:id="@+id/progress_bar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:visibility="@{createDeckViewModel.loading}"
+                    app:layout_constraintTop_toBottomOf="@id/filter_container"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
             />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

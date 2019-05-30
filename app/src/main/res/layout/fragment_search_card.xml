@@ -36,14 +36,14 @@
         app:layout_constraintEnd_toEndOf="parent"
     >
 
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/edit_search"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:fontFamily="@font/roboto_regular"
-        android:hint="@string/search"
-        android:text="@={searchCardViewModel.editSearch}"
-    />
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edit_search"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:fontFamily="@font/roboto_regular"
+            android:hint="@string/search"
+            android:text="@={searchCardViewModel.editSearch}"
+        />
 
     </com.google.android.material.textfield.TextInputLayout>
 

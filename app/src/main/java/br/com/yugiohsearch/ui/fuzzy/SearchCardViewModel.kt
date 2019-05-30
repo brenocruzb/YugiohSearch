@@ -3,6 +3,7 @@ package br.com.yugiohsearch.ui.fuzzy
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import br.com.yugiohsearch.model.Card
+import br.com.yugiohsearch.model.CardFilter
 import br.com.yugiohsearch.rest.YugiohSearchApi
 import br.com.yugiohsearch.util.Constants
 import com.facebook.drawee.backends.pipeline.Fresco
@@ -27,7 +28,7 @@ class SearchCardViewModel: ViewModel() {
         tilErrorSearch.value = if(editSearch.value.isNullOrEmpty()){
             "Insira o nome de um card"
         }else{
-            YugiohSearchApi().getFuzzyCard(editSearch.value ?: "IS NULL", object : Callback<List<List<Card>>>{
+            YugiohSearchApi().getListCard(CardFilter().apply { fuzzyName = editSearch.value ?: "IS NULL" }, object : Callback<List<List<Card>>>{
                 override fun onResponse(call: Call<List<List<Card>>>, response: Response<List<List<Card>>>) {
                     when(response.code()) {
                         200 -> listCards.value = response.body()!![0]

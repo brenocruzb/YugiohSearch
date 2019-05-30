@@ -15,4 +15,14 @@ class CardFilter: Serializable {
     var fuzzyName: String? = null
 
     fun validateFuzzyName(): Boolean = !fuzzyName.isNullOrEmpty()
+
+    fun getFilterDescription(): List<FilterDescription>{
+        val listDescription = ArrayList<FilterDescription>()
+
+        if(!name.isNullOrEmpty()) listDescription.add(FilterDescription("Nome", name!!))
+        if(!fuzzyName.isNullOrEmpty()) listDescription.add(FilterDescription("Nome Fuzzy", fuzzyName!!))
+
+        return listDescription
+    }
+
 }

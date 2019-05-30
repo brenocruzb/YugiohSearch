@@ -1,6 +1,5 @@
 package br.com.yugiohsearch.util
 
-import android.util.Log
 import android.view.View
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
@@ -10,10 +9,13 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import br.com.yugiohsearch.R
 import br.com.yugiohsearch.model.Card
+import br.com.yugiohsearch.model.CardFilter
 import br.com.yugiohsearch.ui.CardDetailDialog
+import br.com.yugiohsearch.ui.create.FilterToolbarAdapter
 import br.com.yugiohsearch.ui.fuzzy.SearchCardAdapter
 import com.bumptech.glide.Glide
 import com.facebook.drawee.view.SimpleDraweeView
@@ -47,6 +49,20 @@ fun RecyclerView.setCardList(listCards: List<Card>?){
     layoutManager = GridLayoutManager(context,  spanCount)
     setHasFixedSize(true)
     swapAdapter(searchAdapter, true)
+}
+
+@BindingAdapter("cardFilter")
+fun RecyclerView.setCardFilter(filter: CardFilter?){
+    filter ?: return
+
+    val filterToolbarAdapter = FilterToolbarAdapter(filter.getFilterDescription()){
+
+    }
+
+    layoutManager = LinearLayoutManager(context)
+    setHasFixedSize(true)
+    swapAdapter(filterToolbarAdapter, true)
+
 }
 
 @BindingAdapter("expandLayout")

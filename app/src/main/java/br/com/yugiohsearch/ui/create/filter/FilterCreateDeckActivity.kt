@@ -4,37 +4,41 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import br.com.yugiohsearch.R
 import br.com.yugiohsearch.databinding.ActivityFilterCreateDeckBinding
+import br.com.yugiohsearch.model.CardFilter
 
 class FilterCreateDeckActivity : AppCompatActivity(){
 
+    companion object{
+        val APPLIED_FILTER = 258
+        val RESET_FILTER = 369
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val viewModel = ViewModelProviders.of(this).get(FilterCreateDeckViewModel::class.java)
-        DataBindingUtil.setContentView<ActivityFilterCreateDeckBinding>(this, R.layout.activity_filter_create_deck).apply {
-            filterCreateDeckViewModel = viewModel
-        }
-
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        viewModel.filter.observe(this, Observer {
-            Toast.makeText(applicationContext, it.fuzzyName, Toast.LENGTH_LONG).show()
-        })
 
-//        if (intent.extras?.containsKey("filter") == true) {
-//            filter = intent.extras?.get("filter") as FilterBilling
-//            configureSpinner()
-//            loadFiltersToView()
-//
-//            btnApply.setOnClickListener {
-//                applyFilters()
-//            }
-//        } else finish()
+        if (intent.extras?.containsKey("event") == true) {
+
+            val viewModel = ViewModelProviders.of(this).get(FilterCreateDeckViewModel::class.java)
+            val filter = intent.extras?.get("event") as CardFilter
+
+            DataBindingUtil.setContentView<ActivityFilterCreateDeckBinding>(this, R.layout.activity_filter_create_deck).apply {
+                this.filterCreateDeckViewModel = viewModel
+                this.filter = filter
+            }
+
+            viewModel.filter.observe(this, Observer {
+                setResult(APPLIED_FILTER, Intent().apply { putExtra("event", filter) })
+                finish()
+            })
+
+        } else finish()
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -51,14 +55,7 @@ class FilterCreateDeckActivity : AppCompatActivity(){
     }
 
     private fun clearFilters() {
-//        filter = FilterBilling().apply {
-//            index = 0
-//            length = filter.length
-//        }
-//
-//        val intent = Intent()
-//        intent.putExtra("filter", filter)
-//        setResult(RESET_FILTER, intent)
+        setResult(RESET_FILTER, Intent().apply { putExtra("event", CardFilter()) })
         finish()
     }
 
